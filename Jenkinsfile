@@ -9,7 +9,7 @@ pipeline {
 
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/AyushBhor04/expense-tracker-devops.git'
+                git branch: 'main', url: 'https://github.com/AyushBhor04/expense-tracker-devops.git'
             }
         }
 
