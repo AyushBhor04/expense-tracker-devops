@@ -15,19 +15,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t expense-tracker .'
+                sh 'docker build -t expense-tracker .'
             }
         }
 
         stage('Tag Image') {
             steps {
-                bat 'docker tag expense-tracker %DOCKER_IMAGE%:latest'
+                sh 'docker tag expense-tracker $DOCKER_IMAGE:latest'
             }
         }
 
         stage('Push Image') {
             steps {
-                bat 'docker push %DOCKER_IMAGE%:latest'
+                sh 'docker push $DOCKER_IMAGE:latest'
             }
         }
 
