@@ -5,6 +5,7 @@ pipeline {
         DOCKER_IMAGE = "ayushbhor04/expense-tracker"
     }
 
+
     stages {
 
         stage('Clone Repo') {
@@ -18,6 +19,25 @@ pipeline {
                 sh 'docker build -t expense-tracker .'
             }
         }
+
+    stage('Build Docker Image') {
+    steps {
+        bat 'docker build -t expense-tracker .'
+    }
+}
+
+    stage('Tag Image') {
+    steps {
+        bat 'docker tag expense-tracker ayushbhor04/expense-tracker:latest'
+    }
+}
+
+    stage('Push Image') {
+    steps {
+        bat 'docker push ayushbhor04/expense-tracker:latest'
+    }
+}
+
 
         stage('Tag Image') {
             steps {
